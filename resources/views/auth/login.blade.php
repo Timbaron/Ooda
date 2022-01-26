@@ -73,23 +73,38 @@
 
 <div class="container is-max-desktop">
     <!-- This container has a <code>max-width</code> of <code>$desktop - $container-offset</code> on widescreen and fullhd. -->
-    <form class="box">
+    <form class="box" action="{{route('login')}}" method="post">
+        @csrf
         <h1 class="text-center is-size-1">Login</h1>
       <div class="field">
         <label class="label">Email</label>
         <div class="control">
-          <input class="input" type="email" placeholder="e.g. alex@example.com">
+          <input class="input" name="email" type="email" placeholder="e.g. alex@example.com">
+            @error('email')
+                <span role="alert">
+                    <strong class="has-text-danger">{{ $message}}</strong>
+                </span>
+            @enderror
         </div>
       </div>
     
       <div class="field">
         <label class="label">Password</label>
         <div class="control">
-          <input class="input" type="password" placeholder="********">
+          <input class="input" type="password" name="password" placeholder="********">
+            @error('password')
+                <span role="alert">
+                    <strong class="has-text-danger">{{ $message}}</strong>
+                </span>
+            @enderror
         </div>
       </div>
+        <label class="checkbox">
+            <input type="checkbox">
+            Remember me
+        </label><br>
     
-      <button class="button is-primary">Sign in</button>
+      <button class="button is-primary is-medium is-outlined">Log in</button>
     </form>
 </div>
 @endsection
