@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +69,27 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="container is-max-desktop">
+    <!-- This container has a <code>max-width</code> of <code>$desktop - $container-offset</code> on widescreen and fullhd. -->
+    <form class="box">
+        <h1 class="text-center is-size-1">Login</h1>
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input class="input" type="email" placeholder="e.g. alex@example.com">
+        </div>
+      </div>
+    
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control">
+          <input class="input" type="password" placeholder="********">
+        </div>
+      </div>
+    
+      <button class="button is-primary">Sign in</button>
+    </form>
 </div>
 @endsection
