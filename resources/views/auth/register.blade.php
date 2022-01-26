@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<!-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +73,77 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="container is-max-desktop">
+    <!-- This container has a <code>max-width</code> of <code>$desktop - $container-offset</code> on widescreen and fullhd. -->
+    <form class="box" action="{{route('register')}}" method="post">
+        @csrf
+        <h1 class="text-center is-size-1">Welcome to Ooda</h1>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input" name="name" type="text" placeholder="Tech Bishop" required>
+                    @error('name')
+                        <span role="alert">
+                            <strong class="has-text-danger">{{ $message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                <input class="input" name="email" type="email" placeholder="e.g. alex@example.com" required>
+                    @error('email')
+                        <span role="alert">
+                            <strong class="has-text-danger">{{ $message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+    
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control">
+                <input class="input" type="password" name="password" placeholder="********" required>
+                    @error('password')
+                        <span role="alert">
+                            <strong class="has-text-danger">{{ $message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Confirm Password</label>
+                <div class="control">
+                <input class="input" type="password" name="password_confirmation" placeholder="********" required>
+                    @error('password_confirmation')
+                        <span role="alert">
+                            <strong class="has-text-danger">{{ $message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Account Type</label>
+                    <div class="select">
+                        <select name="accountType" id="accountType" required>
+                            <option value="" active>Select account type</option>
+                            <option value="user">User</option>
+                            <option value="merchant">Merchant</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="field">
+            <label class="checkbox">
+                <input type="checkbox" required>
+                I agree to the <a href="#">terms and conditions</a>
+            </label>
+            </div>
+    
+      <button class="button is-primary is-medium is-outlined">Sign Up</button>
+    </form>
 </div>
 @endsection

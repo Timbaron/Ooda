@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -51,8 +52,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users','ends_with:student.aul.edu.ng'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'accountType' => ['required', 'string', Rule::in(['user', 'merchant'])],
         ]);
     }
 
@@ -64,10 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        if($data['accountType'] == 'merchant'){
+            $user->assignRole('merchant');
+        }else{
+            $user->assignRole('user');
+        }
+        return $user;
     }
 }
