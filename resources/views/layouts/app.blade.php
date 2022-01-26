@@ -27,7 +27,7 @@
 
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
+                <a class="navbar-item" href="/">
                 <img src="{{asset('images/ooda-logo.png')}}" width="112" height="100%">
                 </a>
 
@@ -45,31 +45,10 @@
                     </a>
 
                     <a class="navbar-item">
-                        Documentation
+                        Orders
                     </a>
-
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                        More
-                        </a>
-
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                About
-                            </a>
-                            <a class="navbar-item">
-                                Jobs
-                            </a>
-                            <a class="navbar-item">
-                                Contact
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                                Report an issue
-                            </a>
-                        </div>
-                    </div>
                 </div>
+            </div>
 
                 <div class="navbar-end">
                     <div class="navbar-item">
@@ -85,6 +64,15 @@
                                 <a class="button is-primary">
                                 Dashboard
                                 </a>
+                                    <a class="button is-primary" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                             @endguest
                         </div>
                     </div>
