@@ -96,5 +96,13 @@
             @yield('content')
         </main>
     </div>
+
+    <footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Ooda</strong> by <a href="https://jgthms.com">TechBishop</a>. Built with 💙💙💙 by <a class="link is_primary" target="_blank" href="https://github.com/timbaron"> Timothy Akiode</a>
+    </p>
+  </div>
+</footer>
 </body>
 </html>
